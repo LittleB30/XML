@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Person xmlns="http://www.example.org/IT226S1"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="IT226S1.xsd">
+	<height>7</height>
+	<weight>200</weight>
+	<name>IT226</name>
+	<address>
+		<number>200</number>
+		<street>School St.</street>
+		<city>normal</city>
+		<state>IL</state>
+		<zip>61791</zip>
+		<country>USA</country>
+	</address>
+	<gender>O</gender>
+</Person>
+

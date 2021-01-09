@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Class xmlns="http://www.example.org/ClassSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="ClassSchema.xsd">
+	
+	<name>
+		<code>MAT</code>
+		<number>260</number>
+	</name>
+	
+	<description>Discrete Mathematics</description>
+	
+	<instructor>
+		<name>Dr. Sissokho</name>
+		<email>psussok@ilstu.edu</email>
+		<phone>(123) 123-1234</phone>
+	</instructor>
+	
+	<assignment>
+		<name>Chapter 1</name>
+		<points>5</points>
+	</assignment>
+	<assignment>
+		<name>Chapter 2</name>
+		<points>5</points>
+	</assignment>
+	<assignment>
+		<name>Chapter 3</name>
+		<points>5</points>
+	</assignment>
+	<assignment>
+		<name>Chapter 4</name>
+		<points>5</points>
+	</assignment>
+	
+	<exam>
+		<name>Exam 1</name>
+		<points>100</points>
+	</exam>
+	<exam>
+		<name>Exam 2</name>
+		<points>100</points>
+	</exam>
+	
+	<grade>A</grade>
+</Class>

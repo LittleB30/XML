@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/Course" xmlns:tns="http://www.example.org/Course"
+	elementFormDefault="qualified">
+
+	<xs:complexType name="account">
+		<xs:all>
+			<xs:element name="balance" default="0" type="xs:double"/>
+			<xs:element name="name" type="tns:name"></xs:element>
+			<xs:element name="acctNum" type="xs:int"></xs:element>
+			<xs:element name="password" type="tns:password"></xs:element>
+		</xs:all>
+	</xs:complexType>
+	
+	<xs:element name="bankaccount" type="tns:account"></xs:element>
+	
+	<xs:simpleType name="password">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="8"></xs:minLength>
+			<xs:maxLength value="15"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="onlyChars">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[a-z]*"></xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:complexType name="BookType">
+		<xs:sequence>
+			<xs:element name="author" type="tns:name" />
+			<xs:element name="genre" type="xs:string" />
+			<xs:element name="isbn" type="xs:string" />
+			<xs:element name="pages" type="xs:positiveInteger" />
+			<xs:element name="publisher" type="xs:string" />
+			<xs:element name="title" type="xs:string" />
+			<xs:element name="year" type="xs:positiveInteger" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:element name="book" type="tns:BookType"></xs:element>
+	
+	<xs:complexType name="name">
+		<xs:all>
+			<xs:element name="firstName" type="tns:onlyChars"></xs:element>
+			<xs:element name="middleName" type="xs:string"></xs:element>
+			<xs:element name="lastName" type="xs:string"></xs:element>
+		</xs:all>
+	</xs:complexType>
+
+</xs:schema>

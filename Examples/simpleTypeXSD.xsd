@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/Course" xmlns:tns="http://www.example.org/Course"
+	elementFormDefault="qualified">
+
+	<xs:simpleType name="minText">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="5"></xs:minLength>
+			<xs:maxLength value="10"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Element password of type minText -->	
+	<xs:element name="password" type="tns:minText"></xs:element>
+	<xs:element name="myname" type="tns:minText"></xs:element>
+	<xs:element name="password2" type="xs:string"></xs:element>
+	
+	
+	
+	<!-- Element time of type dateTime. dateTime is one of XML datatypes-->
+	<xs:element name="date" type="xs:dateTime"/>
+
+	<xs:simpleType name="range">
+		<xs:restriction base="xs:int">
+			<xs:minInclusive value="0"></xs:minInclusive>
+			<xs:maxInclusive value="20"></xs:maxInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- Element rangeElement of type range. 'range' is a simpleType with a constraint-->
+	<xs:element name="rangeElement" type="tns:range"/>
+
+
+
+	<xs:simpleType name="shoesize">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:enumeration value="11" />
+			<xs:enumeration value="12" />
+			<xs:enumeration value="13" />
+		</xs:restriction>
+	</xs:simpleType>
+	
+	<xs:simpleType name="shoewidth">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="M" />
+			<xs:enumeration value="W" />
+			<xs:enumeration value="EE" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="alphanum">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z][0-9][A-Z]" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:element name="dollars" type="tns:range"></xs:element>
+	<xs:element name="alphanumElement" type="tns:alphanum"></xs:element>
+</xs:schema>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.ilstu.edu/it226"
+	xmlns:tns="http://www.ilstu.edu/it226"
+	elementFormDefault="qualified">
+
+	<xs:simpleType name="year">
+		<xs:restriction base="xs:positiveInteger">
+			<xs:minInclusive value="1900"></xs:minInclusive>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="carType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SEDAN"></xs:enumeration>
+			<xs:enumeration value="COUPE"></xs:enumeration>
+			<xs:enumeration value="CROSSOVER"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="carModel">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z]*[0-9]*" />
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="car">
+		<xs:all>
+			<xs:element name="color" type="xs:string"></xs:element>
+			<xs:element name="year" type="tns:year"></xs:element>
+			<xs:element name="type" type="tns:carType"></xs:element>
+			<xs:element name="model" type="tns:carModel"></xs:element>
+			<xs:element name="vin" type="tns:carModel"></xs:element>
+			<xs:element name="new" type="xs:boolean"></xs:element>
+		</xs:all>
+	</xs:complexType>
+	
+	
+	<xs:simpleType name="FrogColor">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="3"></xs:minLength>
+			<xs:maxLength value="10"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="FrogColorEnum">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Red"></xs:enumeration>
+			<xs:enumeration value="Red"></xs:enumeration>
+			<xs:enumeration value="Red"></xs:enumeration>
+			<xs:enumeration value="Red"></xs:enumeration>
+			<xs:enumeration value="Red"></xs:enumeration>
+			<xs:enumeration value="Red"></xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="FrogJump">
+		<xs:all>
+			<xs:element name="height" type="xs:double"></xs:element>
+			<xs:element name="speed" type="xs:double"></xs:element>
+			<xs:element name="precision" type="xs:double"></xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:complexType name="Frog">
+		<xs:all>
+			<xs:element name="jump" type="tns:FrogJump"></xs:element>
+			<xs:element name="poison" type="xs:boolean"></xs:element>
+			<xs:element name="color" type="tns:FrogColor"></xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:element name="frog" type="tns:Frog"></xs:element>
+
+
+	<xs:attribute name="id">
+		<xs:simpleType>
+			<xs:restriction base="xs:integer"></xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+
+	<xs:simpleType name="minText">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="5"></xs:minLength>
+			<xs:maxLength value="10"></xs:maxLength>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:complexType name="basicInfo">
+		<xs:all>
+			<xs:element name="firstName" type="tns:minText"></xs:element>
+			<xs:element name="lastName" type="xs:string"></xs:element>
+		</xs:all>
+	</xs:complexType>
+
+	<xs:element name="person" type="tns:basicInfo"></xs:element>
+
+	<xs:complexType name="personInfo">
+		<xs:sequence>
+			<xs:element name="firstName" type="xs:string"></xs:element>
+			<xs:element name="lastName" type="tns:minText"></xs:element>
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:element name="person2" type="tns:personInfo"></xs:element>
+
+	<xs:complexType name="fullpersoninfo">
+		<xs:complexContent>
+			<xs:extension base="tns:personInfo">
+				<xs:sequence>
+					<xs:element name="address" type="xs:string" />
+					<xs:element name="city" type="xs:string" />
+					<xs:element name="country" type="xs:string" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="person3" type="tns:fullpersoninfo"></xs:element>
+
+	<xs:complexType name="academicInfo">
+		<xs:complexContent>
+			<xs:extension base="tns:fullpersoninfo">
+				<xs:sequence>
+					<xs:element name="courseGrade" minOccurs="0"
+						maxOccurs="4">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="course" type="xs:string"></xs:element>
+								<xs:element name="grade">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:enumeration value="A"></xs:enumeration>
+											<xs:enumeration value="B"></xs:enumeration>
+											<xs:enumeration value="C"></xs:enumeration>
+											<xs:enumeration value="F"></xs:enumeration>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:element>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="student" type="tns:academicInfo"></xs:element>
+</xs:schema>

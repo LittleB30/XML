@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/IT226S1"
+	xmlns:tns="http://www.example.org/IT226S1"
+	elementFormDefault="qualified">
+
+	<simpleType name="heightType">
+		<restriction base="double">
+			<minExclusive value="0"></minExclusive>
+			<maxExclusive value="9"></maxExclusive>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="weightType">
+		<restriction base="double">
+			<minExclusive value="0"></minExclusive>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="nameType">
+		<restriction base="string">
+			<minLength value="3" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="stateType">
+		<restriction base="string">
+			<length value="2" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="genderType">
+		<restriction base="string">
+			<enumeration value="M"></enumeration>
+			<enumeration value="F"></enumeration>
+			<enumeration value="O"></enumeration>
+			<enumeration value="ND"></enumeration>
+		</restriction>
+	</simpleType>
+
+	<complexType name="addressType">
+		<sequence>
+			<element name="number" type="string"></element>
+			<element name="street" type="string"></element>
+			<element name="city" type="string"></element>
+			<element name="state" type="tns:stateType"></element>
+			<element name="zip" type="int"></element>
+			<element name="country" type="string"></element>
+		</sequence>
+	</complexType>
+	<complexType name="personStructure">
+		<all>
+			<element name="height" type="tns:heightType"></element>
+			<element name="weight" type="tns:weightType"></element>
+			<element name="name" type="tns:nameType"></element>
+			<element name="address" type="tns:addressType"></element>
+			<element name="gender" type="tns:genderType"></element>
+		</all>
+	</complexType>
+	<element name="Person" type="tns:personStructure"></element>
+</schema>

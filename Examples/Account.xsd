@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.example.org/IT226S2"
+	xmlns:tns="http://www.example.org/IT226S2"
+	elementFormDefault="qualified">
+
+	<element name="Account">
+		<complexType>
+			<all>
+				<element name="name" type="tns:nameType"></element>
+				<element name="phone" type="tns:phoneType"></element>
+				<element name="dob" type="date"></element>
+				<element name="username" type="tns:usernameType"></element>
+				<element name="password" type="tns:usernameType"></element>
+				<element name = "gender" type="tns:genderValues"></element>
+			</all>
+		</complexType>
+	</element>
+	<simpleType name="genderValues">
+		<restriction base="string">
+			<enumeration value="M"></enumeration>
+			<enumeration value="F"></enumeration>
+			<enumeration value="A"></enumeration>
+			<enumeration value="O"></enumeration>
+			<enumeration value="ND"></enumeration>
+
+		</restriction>
+	</simpleType>
+	<simpleType name="usernameType">
+		<restriction base="string">
+			<minLength value="8" />
+		</restriction>
+	</simpleType>
+
+	<simpleType name="phoneType">
+		<restriction base="string">
+			<length value="10"></length>
+		</restriction>
+	</simpleType>
+
+	<simpleType name="nameValues">
+		<restriction base="string">
+			<minLength value="5"/>
+		</restriction>
+	</simpleType>
+	<complexType name="nameType">
+		<sequence>
+			<element name="first" type="tns:nameValues"></element>
+			<element name="last" type="tns:nameValues"></element>
+			<element name="middle" type="string"></element>
+		</sequence>
+	</complexType>
+
+
+</schema>

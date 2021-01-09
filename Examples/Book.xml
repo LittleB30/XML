@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<book xmlns="http://www.example.org/Course" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ 			xsi:schemaLocation="classExample.xsd">
+
+	<author>
+		<firstName>rishi</firstName>
+		<middleName/>
+		<lastName>saripalle</lastName>
+	</author>
+	<genre>technical</genre>
+	<isbn>1458969</isbn>
+	<pages>122</pages>
+	<publisher>MySelf</publisher>
+	<title>Virtual Subject 101</title>
+	<year>1990</year>
+</book>

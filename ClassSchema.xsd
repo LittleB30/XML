@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.example.org/ClassSchema" 
+	xmlns:tns="http://www.example.org/ClassSchema" 
+	elementFormDefault="qualified">
+	
+	<element name="Class">
+		<complexType>
+			<sequence>
+				<element name="name" type="tns:nameType"/>
+				<element name="description" type="string"/>
+				<element name="instructor" type="tns:instructorType"/>
+				<element name="assignment" type="tns:assignmentType" minOccurs="4" maxOccurs="unbounded"/>
+				<element name="exam" type="tns:assignmentType" minOccurs="2" maxOccurs="unbounded"/>
+				<element name="grade" type="tns:gradeType"/>
+			</sequence>
+		</complexType>
+	</element>
+	
+<!-- ======================================================== -->	
+	
+	<simpleType name="codeType">
+		<restriction base="string">
+			<minLength value="2"/>
+			<maxLength value="3"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="numberType">
+		<restriction base="int">
+			<minInclusive value="100"/>
+			<maxExclusive value="400"/>
+		</restriction>
+	</simpleType>
+	<simpleType name="phoneType">
+		<restriction base="string">
+			<pattern value="\([0-9]{3}\) [0-9]{3}-[0-9]{4}"/>
+		</restriction>
+	</simpleType>
+	<complexType name="assignmentType">
+		<all>
+			<element name="name" type="string"/>
+			<element name="points" type="int"/>
+		</all>
+	</complexType>
+	
+<!-- ======================================================== -->	
+	
+	<complexType name="nameType">
+		<all>
+			<element name="code" type="tns:codeType"/>
+			<element name="number" type="tns:numberType"/>
+		</all>
+	</complexType>
+	<complexType name="instructorType">
+		<all>
+			<element name="name" type="string"/>
+			<element name="email" type="string"/>
+			<element name="phone" type="tns:phoneType"/>
+		</all>
+	</complexType>
+	<simpleType name="gradeType">
+		<restriction base="string">
+			<enumeration value="A"/>
+			<enumeration value="B"/>
+			<enumeration value="C"/>
+		</restriction>
+	</simpleType>
+</schema>
